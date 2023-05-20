@@ -38,3 +38,16 @@ go to maven installed directory > conf directory > settings.xml
     <activeProfile>spring_remote</activeProfile>
   </activeProfiles>
 ```
+
+Scope for dependencies
+default is compile
+compile - available during build, run, test phases
+`mvn -X compile` X for debug, you will see dependencies in the classpath in logs
+`mvn -X test`, see dependencies in test classpath
+`import` scope is used for poms
+`provided` - expect the dependency to be provided by JDK or the container you are using
+When the dependency is available during build and test phases, but not available during deploy in webapps.
+servlet is provided by tomcat
+`runtime` - needed when we execute or when we test the application, but not during compilation e.g jdbc-driver - runtime
+`system` - it says the dependency will be provided by the filesystem(not recommended). Basically placing jars in some folder and specifying paths for it
+
