@@ -1,8 +1,15 @@
 #Intellij
-!/**/*.iml
-!/**/*.ipr
-!/**/*.iws
-!/**/.idea/
+*.iml
+*.ipr
+*.iws
+.idea/
 
 #maven
-!/**/target/
+target/
+
+#package
+*.jar
+*.war
+*.ear
+*.zip
+*.log
