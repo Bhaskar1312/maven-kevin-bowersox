@@ -15,3 +15,26 @@ mvn archetype `plugin` and generate `goal`, will give 3000+ types, just hit ente
 
 Use `mvn eclipse:eclipse` to generate files for eclipse project, eclipse plugin anf eclipse goal. Later you can import into eclipse or STS
 Use `mvn idea:idea`
+
+
+Run `mvn dependency:copy-dependencies` to pull down only dependencies to local .m2 and copy to target folder
+
+transitive dependencies - dependencies of a dependency, e.g, junit has hamcrest dependency in its pom
+
+Remote repositories - where to pull dependencies from?
+go to maven installed directory > conf directory > settings.xml
+```
+ <profile>
+      <id>spring_remote</id>
+      <repositories>
+        <repository>
+          <id>spring_repository</id>
+          <url>http://repo.spring.io/release</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>spring_remote</activeProfile>
+  </activeProfiles>
+```
