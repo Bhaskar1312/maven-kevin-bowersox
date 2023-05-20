@@ -41,6 +41,8 @@
   </dependencies>
 
   <build>
+    <sourceDirectory>src/nonstandard/java</sourceDirectory>
+    <directory>MyTarget</directory> <!--This is for compiled classes-->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
