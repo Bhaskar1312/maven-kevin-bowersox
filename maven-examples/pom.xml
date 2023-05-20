@@ -19,7 +19,7 @@
 
   <build>
     <sourceDirectory>src/nonstandard/java</sourceDirectory>
-    <directory>MyTarget</directory> <!--This is for compiled classes-->
+    <directory>C:\Users\Bhaskar\Downloads\Code\maven\maven-kevin-bowersox\artifact-destination\development</directory> <!--This is for compiled classes-->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -28,4 +28,23 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>production</id>
+<!--      Each profile must have an ID-->
+      <activation>
+        <property>
+<!--          When the environment variable PACKAGE_ENV with prefix env is PROD, profile is activated, we not specify -Pproduction-->
+<!--          Set env variable in system with name,value-->
+          <name>env.PACKAGE_ENV</name>
+          <value>PROD</value>
+        </property>
+      </activation>
+      <build>
+<!--        Overriding artifact directory for production profile, (also most other things can be overridden-->
+        <directory>C:\Users\Bhaskar\Downloads\Code\maven\maven-kevin-bowersox\artifact-destination\production</directory>
+      </build>
+    </profile>
+  </profiles>
 </project>
