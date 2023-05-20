@@ -80,3 +80,49 @@ This time
  C:\Users\Bhaskar\.m2\repository\com\company\maven\maven-conflict-example-1\1.0-SNAPSHOT\maven-conflict-example-1-1.0-SNAPSHOT.jar,
  C:\Users\Bhaskar\.m2\repository\com\company\maven\maven-conflict-example-2\1.0-SNAPSHOT\maven-conflict-example-2-1.0-SNAPSHOT.jar,
  C:\Users\Bhaskar\.m2\repository\org\apache\commons\commons-lang3\3.12.0\commons-lang3-3.12.0.jar]
+ 
+ Lifecycle of maven 
+ old - default, clean, site
+ new - https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#setting-up-your-project-to-use-the-build-lifecycle
+
+Phase	Handles	Description
+prepare-resources	resource copying	Resource copying can be customized in this phase.
+validate	Validating the information	Validates if the project is correct and if all necessary information is available.
+compile	compilation	Source code compilation is done in this phase.
+Test	Testing	Tests the compiled source code suitable for testing framework.
+package	packaging	This phase creates the JAR/WAR package as mentioned in the packaging in POM.xml.
+install	installation	This phase installs the package in local/remote maven repository.
+Deploy	Deploying	Copies the final package to the remote repository.
+`mvn help:describe -Dcmd=clean`
+
+important phases (6 of 23 phases)
+compile, test-compile, test, package, install, deploy
+compile - compile src/main/java into class for JVM
+test-compile - compile test/main/java into class
+test - run tests using suitable unit test framework, doesn't require package (can turn dont fail build on test fail)
+<build>
+<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+          <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+          </configuration>
+        </plugin>
+</build>
+ 
+package - take the compiled code and package in distributable format e.g, jar, war, ear 
+install - install the package into the local repository, for use as a dependency in other projects locally
+deploy - done in an integration or release environment, copies the final package to the remote repository for sharing with other developers/projects
+
+goals
+`mvn compiler:compile`
+`mvn help:describe -Dplugin=compiler`
+`mvn compiler:help -Ddetail=true -Dgoal=compile`
+
+Plugin properties
+`mvn help:describe -Dcmd=compiler:compile -Ddetail`
+ verbose (Default: false)
+      User property: maven.compiler.verbose
+      Set to true to show messages about what the compiler is doing.
+ `mvn compiler:compile -Dmaven.compiler.verbose=true`
