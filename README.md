@@ -232,4 +232,17 @@ compiler plugin is declared, so we can just place it in pluginManagement section
         </repository>
     </distributionManagement>
     
-    
+mvn test
+mvn install -Dmaven.test.skip=true 
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>2.22.1</version>
+              <configuration>
+                  <testFailureIgnore>true</testFailureIgnore>
+              </configuration>
+          </plugin>
+       </pluginManagement>   
+==
