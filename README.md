@@ -295,5 +295,32 @@ Now inside target > generated-sources > archetype >
  ```
  Run mvn clean install inside base-module
  
+ ##
+ Install/extract tomcat, place it in path > click on startup.bat inside bin folder 
  
+ go to tomcat localhost:8080/ and click on Manager app, click on cancel, now copy role into `conf/tomcat-users.xml` like it says
+ click on shutdown.bat to stop
  
+ For tomcat in tomcat-users.xml, inside tomcat-users section
+<role rolename="manager-gui"/>
+<user username="tomcat" password="s3cret" roles="manager-gui"/>
+Now add tomcat configuration in maven settings.xml file > servers section
+===
+    Add it in build > plugins 
+    <plugins>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <url>http://localhost:8080/manager/text</url>
+          <server>tomcat-server</server>
+        </configuration>
+      </plugin>
+    </plugins>
+    
+mvn tomcat7:deploy
+mvn tomcat:deploy
+mvn clean package tomcat:deploy
+These commands are not working but you can manually upload war file, check again
+
