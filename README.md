@@ -173,4 +173,54 @@ go to more-maven-examples folder > `mvn com.company.maven:first-custom:touch` Th
 mvn jar:jar 
 mvn jar:jar -Djar.finalName=test -Djar.forceCreation=true #create jar file everytime
 mvn clean compile jar:jar 
+
+https://stackoverflow.com/questions/2619598/differences-between-dependencymanagement-and-dependencies-in-maven
+
+mvn javadoc:javadoc (plugin:goal), generated in target/site/index.html
+mvn javadoc:javadoc -Dheader=Company -Dfooter=Copyright  
+#couldn't see footer?
+mvn help:describe -Dcmd=javadoc:javadoc -Ddetail
+ <build>
+     <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.1</version>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+    </plugins>
+    
+    <!-- plugin Management -->
+</build>
+
+why did we specify javadoc in plugin and not in pluginManagement?
+because, javadoc plugin is not mentioned/declared in super-pom/parent-pom
+compiler plugin is declared, so we can just place it in pluginManagement section. The configurations in pluginManagement will be inherited by any child project
+<pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <configuration>
+            <footer>This is the new configuration </footer>
+          </configuration>
+          <executions>
+            <execution>
+<!--              <id></id>-->
+              <phase>compile</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+</plugins>
+ </pluginManagement>
+ 
+ we generated all javadoc and placed them in the jar file
+ 
+ Install 
+ takes artifact and installs it into local repository
+ mvn install:install doesn;t make sense as the project needs to be compiled first
+ just use `mvn install` phase 
+ `mvn deploy` to upload to remote repository
  
