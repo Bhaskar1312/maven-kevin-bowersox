@@ -246,3 +246,5 @@ mvn install -Dmaven.test.skip=true
           </plugin>
        </pluginManagement>   
 ==
+mvn eclipse:eclipse
+Now in eclipse, you can use File > Import > Existing project (instead of Maven import project)
