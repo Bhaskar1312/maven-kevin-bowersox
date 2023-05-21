@@ -270,3 +270,17 @@ mvn war:war
 ===
 Archetypes
 mvn archetype:generate > Filter spring-data-basic(published by kevin bowersox)
+
+From inside repo root, Run 'mvn archetype:create-from-project'
+Now inside target > generated-sources > archetype > 
+```
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+<!-- packing maven-archetype is not present -->
+  <name>${artifactId}</name>
+ ```
+ Now run 'mvn install' (or deploy for company's remote repo) inside inside target > generated-sources > archetype > 
+ To upload to local repository
+ Now run, mvn archetype:generate and select the local 
+ 
