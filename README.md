@@ -248,3 +248,21 @@ mvn install -Dmaven.test.skip=true
 ==
 mvn eclipse:eclipse
 Now in eclipse, you can use File > Import > Existing project (instead of Maven import project)
+===
+Run mvn archetype:generate
+and select maven-archetype-webapp filter 
+
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+        <configuration>
+          <warName>mavenWeb</warName>
+        </configuration>
+      </plugin>
+    </plugins>
+</build>
+
+mvn war:war 
