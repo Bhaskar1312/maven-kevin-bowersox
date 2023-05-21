@@ -355,3 +355,14 @@ Now replace with
  
  mvn -X .... for debugging
  mvn -e ... to debug maven itself for filing bugs
+ 
+ m2e plugin
+ jave ee eclipse has it installed
+ Eclipse EE > Window > Preferences > Maven > (Check) Download repository index updates on startup 
+ Later in pom > Depdendencies > search dependency(e.g commons-lang)
+ If anytime one has issues with m2e not showing correct dependencies, go to eclipse workspace folder > .metadata > .plugins > org.eclipse.m2e.core > nexus > delete the hash folders
+ and restart eclipse
+ 
+ Right click on project > Maven > Add Plugin > search with artifact name(maven-release-plugin which updates pom version)
+ `mvn release:update-versions`
+ 
