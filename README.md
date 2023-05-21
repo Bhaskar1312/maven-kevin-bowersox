@@ -126,3 +126,12 @@ Plugin properties
       User property: maven.compiler.verbose
       Set to true to show messages about what the compiler is doing.
  `mvn compiler:compile -Dmaven.compiler.verbose=true`
+ or
+<plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+            <verbose>true</verbose>
+          </configuration>
+        </plugin>
+and run `mvn compile` or `mvn compiler:compile`
