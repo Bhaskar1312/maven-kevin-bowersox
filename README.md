@@ -324,3 +324,23 @@ mvn tomcat:deploy
 mvn clean package tomcat:deploy
 These commands are not working but you can manually upload war file, check again
 
+Encrypting passwords
+Encrypt master password
+webapp> mvn -emp test 
+{something+something=}
+go to ~/.m2/folder and create settings-security.xml
+<settingsSecurity>
+<master>{something+something=}</master>
+</settingsSecurity>
+
+Encrypt password
+Now run mvn -ep s3cret
+Encrypt password
+$ mvn -ep s3cret
+{Ali/ali+Y=}
+Now replace with
+    <server>
+      <id>tomcat-server</id>
+      <username>tomcat</username>
+      <password>{Ali/ali+Y=}</password>
+    </server>
