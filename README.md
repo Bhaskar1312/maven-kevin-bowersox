@@ -266,3 +266,7 @@ and select maven-archetype-webapp filter
 </build>
 
 mvn war:war 
+
+===
+Archetypes
+mvn archetype:generate > Filter spring-data-basic(published by kevin bowersox)
