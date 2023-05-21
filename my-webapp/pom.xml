@@ -4,6 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <description>${env.PATH}</description>
+
   <groupId>com.company.webapp</groupId>
   <artifactId>my-webapp</artifactId>
   <version>1.0-SNAPSHOT</version>
@@ -38,7 +40,8 @@
   </dependencies>
 
   <build>
-    <finalName>my-webapp</finalName>
+<!--    <finalName>my-webapp</finalName>-->
+    <finalName>${project.artifactId}-${java.version}</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
@@ -46,13 +49,18 @@
         <!-- Run won't work for 7, but deploy will work ?? -->
         <version>2.2</version>
         <configuration>
-          <url>http://localhost:8080/manager/text</url>
+          <url>${maven.tomcat.url}</url>
           <server>tomcat-server</server>
         </configuration>
       </plugin>
     </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
