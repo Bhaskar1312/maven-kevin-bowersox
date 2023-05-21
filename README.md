@@ -142,4 +142,25 @@ Custom Plugins
 `mvn archetype:generate -DgroupId=com.company.maven -DartifactId=first-custom -Dversion=1.0.0-SNAPSHOT  -DarchetypeArtifactId=maven-archetype-mojo -DarchetypeGroupId=org.apache.maven.archetypes`
 
 https://www.baeldung.com/maven-plugin
-go to more-maven-examples folder > `mvn com.company.com:first-custom:touch` This is long way of specifying goal.
+
+go to more-maven-examples folder > `mvn com.company.maven:first-custom:touch` This is long way of specifying goal.
+
+```
+<plugin>
+          <groupId>com.company.maven</groupId>
+          <artifactId>first-custom</artifactId>
+          <version>1.0.0-SNAPSHOT</version>
+          <executions>
+            <execution>
+              <id>first-custom-compile</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>touch</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+ ```       
+ `mvn fCustom:touch`
+ or `mvn package` as we tied it to 'compile' phase
+ 
