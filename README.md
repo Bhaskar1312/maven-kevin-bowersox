@@ -223,4 +223,13 @@ compiler plugin is declared, so we can just place it in pluginManagement section
  mvn install:install doesn;t make sense as the project needs to be compiled first
  just use `mvn install` phase 
  `mvn deploy` to upload to remote repository
- 
+     <distributionManagement>
+        <repository>
+            <id>bhaskar</id>
+            <name>bhaskar-releases</name>
+            <!-- This url doesn't work -->
+            <url>http://bhaskar.artifactoryonline.com/bhaskar/ext-releases-local</url>
+        </repository>
+    </distributionManagement>
+    
+    

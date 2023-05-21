@@ -18,6 +18,14 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>bhaskar</id>
+            <name>bhaskar-releases</name>
+            <!-- This url doesn't work -->
+            <url>http://bhaskar.artifactoryonline.com/bhaskar/ext-releases-local</url>
+        </repository>
+    </distributionManagement>
   <dependencies>
 <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 &ndash;&gt;-->
 <!--    <dependency>-->
