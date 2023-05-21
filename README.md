@@ -284,3 +284,16 @@ Now inside target > generated-sources > archetype >
  To upload to local repository
  Now run, mvn archetype:generate and select the local 
  
+ maven multimodules
+ ```
+   <packaging>pom</packaging> <!-- pom - it will only contain configuration-->
+
+    <modules>
+        <module>../maven-multimodule-module</module>
+        <module>../maven-multimodule-module2</module>
+    </modules>
+ ```
+ Run mvn clean install inside base-module
+ 
+ 
+ 
