@@ -99,6 +99,14 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+            <finalName>pomTest</finalName>
+            <forceCreation>true</forceCreation>
+            <excludes>
+<!--              ant style pattern, there is no ExcludeMe class here in this version, but still -->
+              <exclude>**/ExcludeMe.class</exclude>
+            </excludes>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>

@@ -164,3 +164,13 @@ go to more-maven-examples folder > `mvn com.company.maven:first-custom:touch` Th
  `mvn fCustom:touch`
  or `mvn package` as we tied it to 'compile' phase
  
+ https://maven.apache.org/plugins/index.html
+ 
+ Goals and Plugins
+ maven package
+  or 
+ jar plugin:jar goal
+mvn jar:jar 
+mvn jar:jar -Djar.finalName=test -Djar.forceCreation=true #create jar file everytime
+mvn clean compile jar:jar 
+ 
