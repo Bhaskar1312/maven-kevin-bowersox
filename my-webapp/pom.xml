@@ -50,6 +50,7 @@
         <version>2.2</version>
         <configuration>
           <url>${maven.tomcat.url}</url>
+          <path>/</path>
           <server>tomcat-server</server>
         </configuration>
       </plugin>

@@ -344,3 +344,14 @@ Now replace with
       <username>tomcat</username>
       <password>{Ali/ali+Y=}</password>
     </server>
+    
+ Debugging
+ mvn -h --help
+ mvn -v --version
+ mvn compiler:help
+ 
+ mvn -q compile  
+ show if there is an error
+ 
+ mvn -X .... for debugging
+ mvn -e ... to debug maven itself for filing bugs
