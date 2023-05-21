@@ -135,3 +135,11 @@ Plugin properties
           </configuration>
         </plugin>
 and run `mvn compile` or `mvn compiler:compile`
+
+https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#setting-up-your-project-to-use-the-build-lifecycle
+
+Custom Plugins
+`mvn archetype:generate -DgroupId=com.company.maven -DartifactId=first-custom -Dversion=1.0.0-SNAPSHOT  -DarchetypeArtifactId=maven-archetype-mojo -DarchetypeGroupId=org.apache.maven.archetypes`
+
+https://www.baeldung.com/maven-plugin
+go to more-maven-examples folder > `mvn com.company.com:first-custom:touch` This is long way of specifying goal.
