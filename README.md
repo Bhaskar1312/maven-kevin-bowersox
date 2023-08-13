@@ -366,3 +366,67 @@ Now replace with
  Right click on project > Maven > Add Plugin > search with artifact name(maven-release-plugin which updates pom version)
  `mvn release:update-versions`
  
+
+
+tomcat webapp
+the tomcat7 plugin is indeed the correct one to use if you want to deploy a web application to Tomcat 10. The name tomcat7 should be understood as tomcat7andhigher.
+Explicitly set a version for all default plugins used in your build.
+Use a jakarta.servlet-api or a jakarta.jakartaee-web-api version that's compatible with your application container.
+Ensure that the tomcat7 plugin configuration refers to the correct server ID from your settings.xml.
+Ensure that the settings.xml uses the same username and password as used in tomcat-users.xml.
+Ensure that you have the correct roles set for your tomcat user
+pom.xml
+```xml
+<dependencies>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+  </dependencies>
+```
+```xml
+<plugins>
+<plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <server>Tomcat10</server>
+          </configuration>
+        </plugin>
+      </plugins>
+```
+settings.xml in ~/.m2/ or $MAVEB_HOME/conf/settings.xml
+```xml
+<settings
+  xmlns              = "http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi          = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation = "http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd"
+>
+  <servers>
+    <server>
+      <id>Tomcat10</id>
+      <username>example-user</username>
+      <password>example-password</password>
+    </server>
+  </servers>
+</settings>
+```
+tomcat-users.xml in $TOMCAT_HOME/conf
+```xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users
+        version            = "1.0"
+        xmlns              = "http://tomcat.apache.org/xml"
+        xmlns:xsi          = "http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation = "http://tomcat.apache.org/xml tomcat-users.xsd"
+>
+    <user
+            username = "example-user"
+            password = "example-password"
+            roles    = "admin,manager-gui,manager-script"
+    />
+</tomcat-users>
+```
+and later check in http://localhost:8080/my-webapp/ (or however the folder in $TOMcAT_HOME/webapps/ looks like)
